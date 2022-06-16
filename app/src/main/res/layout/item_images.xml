@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="ru.lissdev.sportnote.BuildConfig" />
+
+        <variable
+            name="exercise_images"
+            type="ru.lissdev.sportnote.data.model.ExerciseImages" />
+
+    </data>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="@{exercise_images.image != null &amp;&amp; exercise_images.image.length() > 0 ? View.VISIBLE : View.GONE}">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="150dp"
+                android:src="@drawable/svg_image_empty"
+                loadImage="@{exercise_images.image}"/>
+
+        </LinearLayout>
+
+</layout>

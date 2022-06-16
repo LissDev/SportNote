@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph.xml"
+    app:startDestination="@id/exercisesFragment">
+    <fragment
+        android:id="@+id/scheduleFragment"
+        android:name="ru.lissdev.sportnote.ui.fragments.ScheduleFragment"
+        android:label="fragment_schedule"
+        tools:layout="@layout/fragment_schedule" />
+    <fragment
+        android:id="@+id/exercisesFragment"
+        android:name="ru.lissdev.sportnote.ui.fragments.ExercisesFragment"
+        android:label="fragment_exercises"
+        tools:layout="@layout/fragment_exercises" />
+    <fragment
+        android:id="@+id/savedExercisesFragment"
+        android:name="ru.lissdev.sportnote.SavedExercisesFragment"
+        android:label="fragment_saved_exercises"
+        tools:layout="@layout/fragment_saved_exercises" />
+    <fragment
+        android:id="@+id/moreFragment"
+        android:name="ru.lissdev.sportnote.ui.fragments.MoreFragment"
+        android:label="fragment_more"
+        tools:layout="@layout/fragment_more" />
+</navigation>

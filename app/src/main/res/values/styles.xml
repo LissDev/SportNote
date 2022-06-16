@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryVariant">@color/colorPrimaryDark</item>
+        <item name="colorPrimarySurface">@color/colorPrimaryDark</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorSecondary">@color/colorAccent</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:statusBarColor">@color/colorPrimaryDark</item>
+        <item name="android:windowActivityTransitions">true</item>
+        <item name="android:windowBackground">@color/colorMainBackground</item>
+        <item name="android:textViewStyle">@style/AppTheme.TextView</item>
+        <item name="snackbarTextViewStyle">@style/AppTheme.TextView</item>
+    </style>
+
+    <style name="AppTheme.TextView" parent="android:Widget.TextView">
+        <item name="android:textColor">@color/colorMainText</item>
+        <item name="android:fontFamily">@font/helvetica_light</item>
+    </style>
+
+    <style name="AppTheme.WithTitle">
+        <item name="windowNoTitle">false</item>
+    </style>
+</resources>

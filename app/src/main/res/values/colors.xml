@@ -1,10 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+
+    <color name="colorPrimary">#C0DFF1</color>
+    <color name="colorPrimaryLight">#EDF7FC</color>
+    <color name="colorPrimaryDark">#273a64</color>
+    <color name="colorAccent">#2F9BFF</color>
+
+    <color name="colorDesignGray">#B2B2B2</color>
+    <color name="colorDesignLightGray">#C4C5C9</color>
+
+    <color name="colorGreenBordered">#BA67C10C</color>
+    <color name="colorAcceptAddit">#FF4F12</color>
+    <color name="colorFab">#EB4897DF</color>
+    <color name="colorGray">#888888</color>
+    <color name="colorBlack">#000000</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorWhiteTransparent">#ABFFFFFF</color>
+    <color name="colorOrange">#FF622D</color>
+    <color name="colorYellow">#FCB50B</color>
+    <color name="colorLightGray">#d2d2d2</color>
+    <color name="colorDelimiter">#D0CFD7</color>
+    <color name="colorLink">#EB4897DF</color>
+
+<!--Background-->
+    <color name="colorMainBackground">#F4F5F7</color>
+    <color name="colorErrorBackground">#F2DEDE</color>
+    <color name="colorSuccessBackground">#DFF0d8</color>
+    <color name="colorWarningBackground">#fcf8e3</color>
+    <color name="colorGrayBackground">#f7f7f7</color>
+
+<!--Text-->
+    <color name="colorMainText">#000000</color>
+    <color name="colorEmptyText">#A2A2A2</color>
+    <color name="colorLoadingText">#A2A2A2</color>
+    <color name="colorErrorText">#D9534F</color>
+    <color name="colorSuccessText">#319502</color>
+    <color name="colorWarningText">#8a6d3b</color>
 </resources>

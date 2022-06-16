@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.fragments.ExercisesCategoriesFragment">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="vm"
+            type="ru.lissdev.sportnote.databinding.viewmodels.ExercisesCategoriesViewModel" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            app:itemBinding="@{vm.binding}"
+            app:items="@{vm.list}"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+        <FrameLayout
+            android:id="@+id/loading"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_gravity="center"
+            android:background="@color/colorLightGray"
+            android:padding="8dp"
+            android:visibility="@{vm.loading ? View.VISIBLE : View.GONE}">
+
+            <ProgressBar
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:indeterminate="true" />
+        </FrameLayout>
+
+    </FrameLayout>
+</layout>

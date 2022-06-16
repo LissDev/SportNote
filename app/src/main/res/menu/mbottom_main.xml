@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/scheduleFragment"
+        android:icon="@drawable/svg_button_schedule"
+        android:visible="false"
+        android:title="@string/main_bmb_schedule" />
+
+    <item
+        android:id="@+id/exercisesFragment"
+        android:icon="@drawable/svg_button_exercises"
+        android:title="@string/main_bnb_exercises" />
+
+    <item
+        android:id="@+id/savedExercisesFragment"
+        android:icon="@drawable/svg_button_saved_exercises"
+        android:title="@string/main_bmb_saved_exercises" />
+
+    <item
+        android:id="@+id/moreFragment"
+        android:icon="@drawable/svg_button_more"
+        android:visible="false"
+        android:title="@string/main_bnb_more" />
+
+</menu>

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.fragments.ExerciseFragment">
+
+    <data>
+
+        <import type="android.text.Html" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="vm"
+            type="ru.lissdev.sportnote.databinding.viewmodels.ExerciseViewModel" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="@{vm.loading ? View.GONE : View.VISIBLE}">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{vm.itemData.name}"
+                    android:textSize="25sp"
+                    tools:text="Название упражнения" />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{vm.itemData.category.name}"
+                    android:textSize="18sp"
+                    tools:text="Группа мышц" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/exercise_details_equipment_title"
+                    android:visibility="@{vm.equipmentData.size() > 0 ? View.VISIBLE : View.GONE}" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:visibility="@{vm.equipmentData.size() > 0 ? View.VISIBLE : View.GONE}"
+                    app:itemBinding="@{vm.equipmentBinding}"
+                    app:items="@{vm.equipmentData}"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/exercise_details_muscles_title"
+                    android:visibility="@{vm.musclesData.size() > 0 ? View.VISIBLE : View.GONE}" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:visibility="@{vm.musclesData.size() > 0 ? View.VISIBLE : View.GONE}"
+                    app:itemBinding="@{vm.musclesBinding}"
+                    app:items="@{vm.musclesData}"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/exercise_details_secondary_muscles_title"
+                    android:visibility="@{vm.secondaryMusclesData.size() > 0 ? View.VISIBLE : View.GONE}" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:visibility="@{vm.secondaryMusclesData.size() > 0 ? View.VISIBLE : View.GONE}"
+                    app:itemBinding="@{vm.musclesBinding}"
+                    app:items="@{vm.secondaryMusclesData}"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text='@{Html.fromHtml(vm.itemData != null ? vm.itemData.description : "")}'
+                    android:textIsSelectable="true" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:visibility="@{vm.imagesData.size() > 0 ? View.VISIBLE : View.GONE}"
+                    app:itemBinding="@{vm.imagesBinding}"
+                    app:items="@{vm.imagesData}"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:enabled="@{!vm.isSaved()}"
+                    android:onClick="@{() -> vm.saveExercise()}"
+                    android:text="@{ vm.isSaved ? @string/button_saved : @string/button_save }" />
+
+            </LinearLayout>
+
+        </ScrollView>
+
+        <FrameLayout
+            android:id="@+id/loading"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_gravity="center"
+            android:background="@color/colorLightGray"
+            android:padding="8dp"
+            android:visibility="@{vm.loading ? View.VISIBLE : View.GONE}">
+
+            <ProgressBar
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:indeterminate="true" />
+
+        </FrameLayout>
+
+    </FrameLayout>
+
+</layout>

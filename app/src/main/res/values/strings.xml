@@ -1,3 +1,23 @@
 <resources>
     <string name="app_name">SportNote</string>
+
+    <string name="main_bmb_schedule">Расписание</string>
+    <string name="main_bmb_saved_exercises">Сохранённые</string>
+    <string name="main_bnb_exercises">Упражнения</string>
+    <string name="main_bnb_more">Ещё</string>
+
+    <string name="exercises_tab_title">Упражнения</string>
+    <string name="saved_exercises_tab_title">Сохранённые упражнения</string>
+    <string name="exercise_tab_title">Детали упражнения</string>
+
+    <string name="exercise_button_text">Детали…</string>
+
+    <string name="exercise_details_equipment_title">Оборудование</string>
+    <string name="exercise_details_muscles_title">Основные мышцы</string>
+    <string name="exercise_details_secondary_muscles_title">Побочные мышцы</string>
+
+    <string name="button_save">Сохранить</string>
+    <string name="button_saved">Сохранено ✓</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

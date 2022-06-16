@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/exercises_nav_graph.xml"
+    app:startDestination="@id/exerciseCategoriesFragment">
+
+    <fragment
+        android:id="@+id/exerciseCategoriesFragment"
+        android:name="ru.lissdev.sportnote.ui.fragments.ExercisesCategoriesFragment"
+        android:label="fragment_exercises_categories"
+        tools:layout="@layout/fragment_exercises_categories">
+        <action
+            android:id="@+id/action_exercisesCategoriesFragment_to_exerciseListFragment"
+            app:destination="@id/exerciseListFragment"
+            app:enterAnim="@anim/next_fragment_enter_anim"
+            app:exitAnim="@anim/next_fragment_exit_anim"
+            app:popEnterAnim="@anim/prev_fragment_enter_anim"
+            app:popExitAnim="@anim/prev_fragment_exit_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/exerciseListFragment"
+        android:name="ru.lissdev.sportnote.ui.fragments.ExerciseListFragment"
+        android:label="fragment_exercise_list"
+        tools:layout="@layout/fragment_exercise_list">
+        <argument
+            android:name="categoryId"
+            app:argType="long" />
+        <action
+            android:id="@+id/action_exerciseListFragment_to_exerciseFragment"
+            app:destination="@id/exerciseFragment"
+            app:enterAnim="@anim/next_fragment_enter_anim"
+            app:exitAnim="@anim/next_fragment_exit_anim"
+            app:popEnterAnim="@anim/prev_fragment_enter_anim"
+            app:popExitAnim="@anim/prev_fragment_exit_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/exerciseFragment"
+        android:name="ru.lissdev.sportnote.ui.fragments.ExerciseFragment"
+        android:label="fragment_exercise"
+        tools:layout="@layout/fragment_exercise">
+        <argument
+            android:name="exerciseId"
+            app:argType="long" />
+    </fragment>
+</navigation>
