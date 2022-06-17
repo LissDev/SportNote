@@ -3,6 +3,7 @@ package ru.lissdev.sportnote.data.db
 import androidx.room.*
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Maybe
+import io.reactivex.rxjava3.core.Observable
 import ru.lissdev.sportnote.data.model.*
 
 @Dao
@@ -22,6 +23,9 @@ interface ExercisesDao {
     fun insertMuscles(muscleList: List<ExerciseMuscle>): Completable
 
     // SELECT
+    @Query("SELECT * FROM exercise_table")
+    fun observeAllExercises(): Observable<List<ExerciseDetails>>
+
     @Query("SELECT * FROM exercise_table")
     fun selectAllExercises(): Maybe<List<ExerciseDetails>>
 

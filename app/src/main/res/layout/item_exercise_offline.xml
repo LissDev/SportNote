@@ -118,6 +118,12 @@
                     android:text='@{Html.fromHtml(exercise.description != null ? exercise.description : "")}'
                     android:textIsSelectable="true" />
 
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{() -> vm.deleteExercise(exercise.id)}"
+                    android:text="@{ @string/button_delete }" />
+
             </LinearLayout>
 
         </LinearLayout>

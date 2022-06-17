@@ -2,6 +2,7 @@ package ru.lissdev.sportnote.data.db
 
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Maybe
+import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.schedulers.Schedulers
 import ru.lissdev.sportnote.data.model.ExerciseDetails
 import ru.lissdev.sportnote.data.model.ExerciseEquipment
@@ -115,6 +116,60 @@ class ExercisesRepositoryImpl @Inject constructor(
                         }
                     }
             }
+            .subscribeOn(Schedulers.io())
+    }
+
+    override fun observeExercises(): Observable<List<ExerciseDetails>> {
+        return exercisesDao.observeAllExercises()
+            .flatMapMaybe { exercisesList ->
+                exercisesDao.selectCategories()
+                    .map { categoriesList ->
+                        exercisesList.onEach { exerciseData ->
+                            exerciseData.category = categoriesList.find { categoryData ->
+                                categoryData.id == exerciseData.category_id
+                            } ?: ExercisesCategory()
+                        }
+                    }
+            }
+            .flatMapMaybe { exercisesList ->
+                exercisesDao.selectAllEquipments()
+                    .map { equipmentList ->
+                        exercisesList.onEach { exerciseData ->
+                            val newEquipmentList: MutableList<ExerciseEquipment> = mutableListOf<ExerciseEquipment>()
+                            equipmentList.forEach { equipmentData ->
+                                if (equipmentData.exercise_id == exerciseData.id)
+                                    newEquipmentList.add(equipmentData)
+                            }
+                            if (newEquipmentList.isNotEmpty())
+                                exerciseData.equipment = newEquipmentList
+                        }
+                    }
+            }
+            .flatMapMaybe { exercisesList ->
+                exercisesDao.selectAllMuscles()
+                    .map { musclesList ->
+                        exercisesList.onEach { exerciseData ->
+                            val newMusclesList: MutableList<ExerciseMuscle> = mutableListOf<ExerciseMuscle>()
+                            val newSecondaryMusclesList: MutableList<ExerciseMuscle> = mutableListOf<ExerciseMuscle>()
+                            musclesList.forEach { muscleData ->
+                                if (muscleData.exercise_id == exerciseData.id)
+                                    if (muscleData.isSecondary)
+                                        newSecondaryMusclesList.add(muscleData)
+                                    else
+                                        newMusclesList.add(muscleData)
+                            }
+                            if (newMusclesList.isNotEmpty())
+                                exerciseData.muscles = newMusclesList
+                            if (newSecondaryMusclesList.isNotEmpty())
+                                exerciseData.muscles_secondary = newSecondaryMusclesList
+                        }
+                    }
+            }
+            .subscribeOn(Schedulers.io())
+    }
+
+    override fun deleteExercise(id: Long): Completable {
+        return exercisesDao.deleteExercise(id)
             .subscribeOn(Schedulers.io())
     }
 
